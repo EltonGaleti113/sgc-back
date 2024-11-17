@@ -30,6 +30,12 @@ class AuthController extends Controller
         return response()->json(['message' => 'User registered successfully', 'user' => $user], 201);
     }
 
+    public function atualizar(Resquest $request)
+    {
+        dd($request);
+        $user = User::find($request->id);
+    }
+
     public function login(Request $request)
     {
         $credentials = $request->only('email', 'password');
