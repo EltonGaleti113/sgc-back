@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use Laravel\Sanctum\HasApiTokens;
 
 class AuthController extends Controller
 {
@@ -28,6 +29,12 @@ class AuthController extends Controller
         ]);
 
         return response()->json(['message' => 'User registered successfully', 'user' => $user], 201);
+    }
+
+    public function atualizar(Resquest $request)
+    {
+        dd($request);
+        $user = User::find($request->id);
     }
 
     public function login(Request $request)

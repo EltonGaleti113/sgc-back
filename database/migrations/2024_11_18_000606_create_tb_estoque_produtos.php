@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::connection('sgc')->create('tb_produtos', function (Blueprint $table) {
+        Schema::connection('sgc')->create('tb_estoque_produtos', function (Blueprint $table) {
             $table->id('sr_id');
-            $table->string('vc_nome',255)->nullable(false);
-            $table->string('vc_descricao',255)->nullable(true);
-            $table->float('fl_preco')->nullable(false);
+            $table->unsignedBigInteger('fk_produto');
+            $table->foreign('fk_produto')->references('sr_id')->on('tb_produtos');
+            $table->integer('it_quantidade');
             $table->timestamps();
         });
     }
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tb_produtos');
+        Schema::connection('sgc')->dropIfExists('tb_estoque_produtos');
     }
 };
