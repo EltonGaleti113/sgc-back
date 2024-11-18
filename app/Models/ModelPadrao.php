@@ -14,8 +14,8 @@ class ModelPadrao extends Model
     protected $connection = 'sgc';
     protected $id = "sr_id";
 
-    const CREATED_AT = 'ts_criado_em';
-    const UPDATED_AT = 'ts_atualizado_em';
-    const DELETED_AT = 'ts_deletado_em';
+    const CREATED_AT = 'created_at';
+    const UPDATED_AT = 'updated_at'; 
+    const DELETED_AT = 'deleted_at';
     
 }

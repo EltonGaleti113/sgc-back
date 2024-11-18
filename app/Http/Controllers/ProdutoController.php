@@ -10,16 +10,19 @@ class ProdutoController extends Controller
     // Método para listar produtos
     public function index()
     {
-        // Aqui você pode buscar produtos do banco de dados e retorná-los
         return response()->json(['mensagem' => 'Lista de produtos']);
     }
 
     public function criarProduto(Request $request)
     {
-        dd($request);
         try {
-         $dadosProduto = $request-> all();
-         $produto = Produtos::create($dadosProduto);
+            $dadosProduto = $request->all([
+                'vc_nome',
+                'vc_descricao',
+                'fl_preco',
+                'fk_estoque'
+            ]);
+            $produto = Produtos::create($dadosProduto);
             return response()->json(['mensagem' => 'Produto criado com sucesso'], 201);
         } catch (\Exception $e) {
             return response()->json(['mensagem' => 'Erro ao criar produto'], 500);
