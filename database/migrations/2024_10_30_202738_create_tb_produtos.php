@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id('sr_id');
             $table->string('vc_nome',255)->nullable(false);
             $table->string('vc_descricao',255)->nullable(true);
+            $table->float('fl_preco')->nullable(false);
             $table->timestamps();
         });
     }
